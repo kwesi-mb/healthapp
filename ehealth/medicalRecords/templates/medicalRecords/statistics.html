@@ -1,0 +1,28 @@
+<div>
+    <canvas id="myChart"></canvas>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: [{% for category in category_list %} '{{ category }}', {% endfor %}],
+        datasets: [{
+          label: '# of Votes',
+          data: [{% for total in total_users %} '{{create_by}}', {% endfor %}],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
